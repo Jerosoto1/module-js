@@ -1,13 +1,19 @@
-let nombre = prompt("Escribe tu nombre:");
-let edadInput = prompt("Escribe tu edad:");
-let edad = Number(edadInput);
+const nombre = prompt("¿Cuál es tu nombre?");
+let edadValida = false;
+let edad;
 
-if (isNaN(edad)) {
-console.error("Error: Ingresa un número válido para la edad.");
-} else {
-if (edad < 18) {
-    console.log(`Hola ${nombre}, eres menor de edad.`);
-} else {
-    console.log(`Hola ${nombre}, eres mayor de edad.`);
+while (!edadValida) {
+  const edadTexto = prompt("¿Cuántos años tienes?");
+  if (/^\d+$/.test(edadTexto)) {
+    edad = parseInt(edadTexto);
+    edadValida = true;
+  } else {
+    alert("Por favor, ingresa solo números válidos para la edad.");
+  }
 }
+
+if (edad < 18) {
+  alert(`Hola ${nombre}, aún eres menor de edad.`);
+} else {
+  alert(`Hola ${nombre}, ya eres mayor de edad.`);
 }
